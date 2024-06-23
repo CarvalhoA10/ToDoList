@@ -28,7 +28,7 @@
 
 ### Rotas da api
 
-    * /funcionarios
+    * localhost:8080/funcionarios
         Lista todos os funcionários mandando uma requisição com metodo GET
 
     * /funcionario/criar

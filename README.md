@@ -33,13 +33,13 @@
 
     * /funcionario/criar
         Cria um funcionário ao mandar uma requisição com metodo POST com o JSON:
-        ```json
+        ~~~json
         {
             nome: "Joao",
             cargo: "gerente",
             email: "email@email.com",
         }
-        ```
+        ~~~
 
     * /funcionarios/atualizar
         Atualiza um funcionário ao mandar uma requisição com metodo PUT com o JSON:

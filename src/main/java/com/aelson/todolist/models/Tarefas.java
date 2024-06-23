@@ -1,6 +1,7 @@
 package com.aelson.todolist.models;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import com.aelson.todolist.helpers.StatusTarefa;
 
@@ -38,7 +39,7 @@ public class Tarefas {
     private Funcionario funcionario;
 
     @OneToMany(mappedBy = "tarefa")
-    private Anotacao anotacao;
+    private Set<Anotacao> anotacoes;
 
     public Long getId() {
         return id;
@@ -88,12 +89,12 @@ public class Tarefas {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public Anotacao getAnotacao() {
-        return anotacao;
+    public Set<Anotacao> getAnotacao() {
+        return anotacoes;
     }
 
-    public void setAnotacao(Anotacao anotacao) {
-        this.anotacao = anotacao;
+    public void setAnotacao(Set<Anotacao> anotacoes) {
+        this.anotacoes = anotacoes;
     }
 
     public Funcionario getFuncionario() {

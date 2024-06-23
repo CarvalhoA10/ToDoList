@@ -1,6 +1,7 @@
 package com.aelson.todolist.models;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class Funcionario {
     private LocalDateTime dataAtualizacao;
 
     @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY)
-    private Tarefas tarefa;
+    private Set<Tarefas> tarefas;
 
     public Long getId() {
         return id;
@@ -80,12 +81,12 @@ public class Funcionario {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public Tarefas getTarefa() {
-        return tarefa;
+    public Set<Tarefas> getTarefa() {
+        return tarefas;
     }
 
-    public void setTarefa(Tarefas tarefa) {
-        this.tarefa = tarefa;
+    public void setTarefa(Set<Tarefas> tarefas) {
+        this.tarefas = tarefas;
     }
 
     

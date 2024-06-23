@@ -34,7 +34,7 @@
     * /funcionario/criar
         Cria um funcionário ao mandar uma requisição com metodo POST com o JSON:
 
-        ```json
+        ```
         {
             "nome": "Joao",
             "cargo": "gerente",

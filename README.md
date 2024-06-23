@@ -11,7 +11,7 @@
 
 ### Recursos
 
-    [x] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
+    [*] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
     [ ] Atualizacao de funcionario
     [ ] Exclusão de funcionario
     [ ] Cadastro de tarefas (Nome, Descrição, data de criação, data de atualização)
@@ -33,22 +33,24 @@
 
     * /funcionario/criar
         Cria um funcionário ao mandar uma requisição com metodo POST com o JSON:
-        ~~~json
+
+        ```json
         {
-            nome: "Joao",
-            cargo: "gerente",
-            email: "email@email.com",
+            "nome": "Joao",
+            "cargo": "gerente",
+            "email": "email@email.com"
         }
-        ~~~
+        ```
 
     * /funcionarios/atualizar
         Atualiza um funcionário ao mandar uma requisição com metodo PUT com o JSON:
+
         ```json
         {
-            id: 1 //id do funcionário
-            nome: "Novo nome",
-            cargo: "Novo cargo",
-            email: "Novo email",
+            "id": 1, //id do funcionário
+            "nome": "Novo nome",
+            "cargo": "Novo cargo",
+            "email": "Novo email"
         }
         ```
 
@@ -60,20 +62,22 @@
 
     * /tarefas/criar
         Cria uma tarefa mandando uma requisição com metodo POST e um JSON
+
         ```json
         {
-            nome: Fazer a api,
-            funcionarioId: 1,
-            sobre: Uma api que será utilizada em .....
+            "nome": "Fazer a api",
+            "funcionarioId" : 1,
+            "sobre": "Uma api que será utilizada em ....."
         }
         ```
 
     * /tarefas/atualizar
         Atualiza uma tarefa mandando uma requisição com metodo PUT e um JSON
+
         ```json
         {
-            id: 1,
-            status: Finalizada
+            "id": 1,
+            "status": Finalizada
         }
         ```
 

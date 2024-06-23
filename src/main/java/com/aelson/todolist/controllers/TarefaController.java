@@ -1,5 +1,6 @@
 package com.aelson.todolist.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,7 @@ public class TarefaController {
     
     @GetMapping("")
     public ResponseEntity<Tarefas> listarTodas(){
-
-        
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
 

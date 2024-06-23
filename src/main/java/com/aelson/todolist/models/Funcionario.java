@@ -2,22 +2,18 @@ package com.aelson.todolist.models;
 
 import java.time.LocalDateTime;
 
-import com.aelson.todolist.helpers.StatusTarefa;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tarefas")
-public class Tarefas {
+@Table(name = "funcionarios")
+public class Funcionario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,20 +21,16 @@ public class Tarefas {
     @Column
     private String nome;
     @Column
-    private String descricao;
+    private String cargo;
     @Column
-    private StatusTarefa status;
+    private String email;
     @Column
     private LocalDateTime dataCriacao;
     @Column
     private LocalDateTime dataAtualizacao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "funcionario_id")
-    private Funcionario funcionario;
-
-    @OneToMany(mappedBy = "tarefa")
-    private Anotacao anotacao;
+    @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY)
+    private Tarefas tarefa;
 
     public Long getId() {
         return id;
@@ -56,20 +48,20 @@ public class Tarefas {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
-    public StatusTarefa getStatus() {
-        return status;
+    public String getEmail() {
+        return email;
     }
 
-    public void setStatus(StatusTarefa status) {
-        this.status = status;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDateTime getDataCriacao() {
@@ -88,21 +80,14 @@ public class Tarefas {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public Anotacao getAnotacao() {
-        return anotacao;
+    public Tarefas getTarefa() {
+        return tarefa;
     }
 
-    public void setAnotacao(Anotacao anotacao) {
-        this.anotacao = anotacao;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setTarefa(Tarefas tarefa) {
+        this.tarefa = tarefa;
     }
 
     
+
 }

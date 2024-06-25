@@ -1,7 +1,8 @@
 package com.aelson.todolist.models;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.Date;
+import java.util.List;
 
 import com.aelson.todolist.helpers.StatusTarefa;
 
@@ -18,7 +19,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tarefas")
-public class Tarefas {
+public class Tarefa {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,8 @@ public class Tarefas {
     @Column
     private StatusTarefa status;
     @Column
+    private Date prazoEntrega;
+    @Column
     private LocalDateTime dataCriacao;
     @Column
     private LocalDateTime dataAtualizacao;
@@ -39,7 +42,7 @@ public class Tarefas {
     private Funcionario funcionario;
 
     @OneToMany(mappedBy = "tarefa")
-    private Set<Anotacao> anotacoes;
+    private List<Anotacao> anotacoes;
 
     public Long getId() {
         return id;
@@ -89,11 +92,11 @@ public class Tarefas {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public Set<Anotacao> getAnotacao() {
+    public List<Anotacao> getAnotacoes() {
         return anotacoes;
     }
 
-    public void setAnotacao(Set<Anotacao> anotacoes) {
+    public void setAnotacoes(List<Anotacao> anotacoes) {
         this.anotacoes = anotacoes;
     }
 
@@ -104,6 +107,15 @@ public class Tarefas {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
+
+    public Date getPrazoEntrega() {
+        return prazoEntrega;
+    }
+
+    public void setPrazoEntrega(Date prazoEntrega) {
+        this.prazoEntrega = prazoEntrega;
+    }
+
 
     
 }

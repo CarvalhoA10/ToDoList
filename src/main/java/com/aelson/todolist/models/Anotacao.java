@@ -26,7 +26,7 @@ public class Anotacao {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tarefa_id")
-    private Tarefas tarefa;
+    private Tarefa tarefa;
 
     public Long getId() {
         return id;
@@ -52,11 +52,11 @@ public class Anotacao {
         this.dataAnotacao = dataAnotacao;
     }
 
-    public Tarefas getTarefa() {
+    public Tarefa getTarefa() {
         return tarefa;
     }
 
-    public void setTarefa(Tarefas tarefa) {
+    public void setTarefa(Tarefa tarefa) {
         this.tarefa = tarefa;
     }
 

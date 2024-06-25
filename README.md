@@ -11,14 +11,15 @@
 
 ### Recursos
 
-    [] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
-    [] Atualizacao de funcionario
-    [] Exclusão de funcionario
-    [] Cadastro de tarefas (Nome, Descrição, data de criação, data de atualização)
-    [] Atualização de tarefas (Iniciada, Finalizada, Cancelada, Pausada)
-    [] Exclusão de tarefas
-    [] Anotações das tarefas
-    [] Anotações das tarefas
+    [ ] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
+    [ ] Atualizacao de funcionario
+    [ ] Exclusão de funcionario
+    [ ] Cadastro de tarefas (Nome, Descrição, data de criação, data de atualização)
+    [ ] Atualização de tarefas (Iniciada, Finalizada, Cancelada, Pausada)
+    [ ] Exclusão de tarefas
+    [ ] Anotações das tarefas
+
+    [ ] Anotações das tarefas
 
 ### Como utilizadar a api
 
@@ -47,7 +48,7 @@
 
         ```json
         {
-            "id": 1, //id do funcionário
+            "id": 1,
             "nome": "Novo nome",
             "cargo": "Novo cargo",
             "email": "Novo email"

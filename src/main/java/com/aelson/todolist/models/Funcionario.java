@@ -1,7 +1,7 @@
 package com.aelson.todolist.models;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,12 +26,12 @@ public class Funcionario {
     @Column
     private String email;
     @Column
-    private LocalDateTime dataCriacao;
+    private LocalDateTime dataRegistro;
     @Column
     private LocalDateTime dataAtualizacao;
 
     @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY)
-    private Set<Tarefas> tarefas;
+    private List<Tarefa> tarefas;
 
     public Long getId() {
         return id;
@@ -65,12 +65,12 @@ public class Funcionario {
         this.email = email;
     }
 
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
+    public LocalDateTime getDataRegistro() {
+        return dataRegistro;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setDataRegistro(LocalDateTime dataRegistro) {
+        this.dataRegistro = dataRegistro;
     }
 
     public LocalDateTime getDataAtualizacao() {
@@ -81,11 +81,11 @@ public class Funcionario {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public Set<Tarefas> getTarefa() {
+    public List<Tarefa> getTarefa() {
         return tarefas;
     }
 
-    public void setTarefa(Set<Tarefas> tarefas) {
+    public void setTarefa(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
 

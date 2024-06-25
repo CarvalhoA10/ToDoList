@@ -1,6 +1,6 @@
 # Lista de tarefas (API) (Em Desenvolvimento)
 
-    Uma api utilizando a linguagem de programação java.
+Uma api utilizando a linguagem de programação java.
 
 ## Tecnologias utilizadas
 

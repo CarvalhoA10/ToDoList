@@ -22,13 +22,13 @@
 
 ## Como utilizadar a api
 
-    Primeiramente tenha o JDK 21 instalado na máquina, clone o repositório e abra com sua IDE favorita java. Por fim rode o TodolistApplication.java.
+Primeiramente tenha o JDK 21 instalado na máquina, clone o repositório e abra com sua IDE favorita java. Por fim rode o TodolistApplication.java.
 
-    O arquivo application.properties deverá ser alterado para o seu banco de dados como url, username e senha.
+O arquivo application.properties deverá ser alterado para o seu banco de dados como url, username e senha.
 
 ## Rotas da api
 
-    * localhost:8080/funcionarios
+* localhost:8080/funcionarios
         Lista todos os funcionários mandando uma requisição com metodo GET
 
     * /funcionario/criar

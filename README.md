@@ -1,6 +1,6 @@
 # Lista de tarefas (API) (Em Desenvolvimento)
 
-Uma api utilizando a linguagem de programação java.
+Uma api para controle de funcionários e suas tarefas utilizando a linguagem de programação java e framework spring boot em sua construção.
 
 ## Tecnologias utilizadas
 

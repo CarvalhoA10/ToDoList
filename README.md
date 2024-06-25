@@ -11,7 +11,7 @@
 
 ## Recursos
 
-    [] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
+[] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
     [] Atualizacao de funcionario
     [] Exclusão de funcionario
     [] Cadastro de tarefas (Nome, Descrição, data de criação, data de atualização)

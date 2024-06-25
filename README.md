@@ -1,33 +1,32 @@
-## Lista de tarefas (API) (Em Desenvolvimento)
+# Lista de tarefas (API) (Em Desenvolvimento)
 
     Uma api utilizando a linguagem de programação java.
 
-### Tecnologias utilizadas
+## Tecnologias utilizadas
 
     - VS code
     - JDK 21
     - Mysql
     - Spring boot
 
-### Recursos
+## Recursos
 
-    [ ] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
-    [ ] Atualizacao de funcionario
-    [ ] Exclusão de funcionario
-    [ ] Cadastro de tarefas (Nome, Descrição, data de criação, data de atualização)
-    [ ] Atualização de tarefas (Iniciada, Finalizada, Cancelada, Pausada)
-    [ ] Exclusão de tarefas
-    [ ] Anotações das tarefas
+    [] Cadastro de funcionarios(nome, cargo, email, data de cadastro, data de atualizacao)
+    [] Atualizacao de funcionario
+    [] Exclusão de funcionario
+    [] Cadastro de tarefas (Nome, Descrição, data de criação, data de atualização)
+    [] Atualização de tarefas (Iniciada, Finalizada, Cancelada, Pausada)
+    [] Exclusão de tarefas
+    [] Anotações das tarefas
+    [] Anotações das tarefas
 
-    [ ] Anotações das tarefas
+## Como utilizadar a api
 
-### Como utilizadar a api
-
-    <p>Primeiramente tenha o JDK 21 instalado na máquina, clone o repositório e abra com sua IDE favorita java. Por fim rode o TodolistApplication.java.</p>
+    Primeiramente tenha o JDK 21 instalado na máquina, clone o repositório e abra com sua IDE favorita java. Por fim rode o TodolistApplication.java.
 
     O arquivo application.properties deverá ser alterado para o seu banco de dados como url, username e senha.
 
-### Rotas da api
+## Rotas da api
 
     * localhost:8080/funcionarios
         Lista todos os funcionários mandando uma requisição com metodo GET
@@ -78,7 +77,7 @@
         ```json
         {
             "id": 1,
-            "status": Finalizada
+            "status": "Finalizada"
         }
         ```
 
@@ -86,7 +85,7 @@
         Exclui uma tarefa mandando uma requisição com metodo DELETE.
 
 
-#### Outras rotas
+### Outras rotas
     
     * /funcionario/{idfuncionario}
         Mostra o funcionário com todas as suas tarefas

@@ -23,7 +23,7 @@
 
 ### Como utilizadar a api
 
-    Primeiramente tenha o JDK 21 instalado na máquina, clone o repositório e abra com sua IDE favorita java. Por fim rode o TodolistApplication.java.
+    <p>Primeiramente tenha o JDK 21 instalado na máquina, clone o repositório e abra com sua IDE favorita java. Por fim rode o TodolistApplication.java.</p>
 
     O arquivo application.properties deverá ser alterado para o seu banco de dados como url, username e senha.
 
@@ -35,7 +35,7 @@
     * /funcionario/criar
         Cria um funcionário ao mandar uma requisição com metodo POST com o JSON:
 
-        ```
+        ```json
         {
             "nome": "Joao",
             "cargo": "gerente",

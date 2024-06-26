@@ -41,7 +41,7 @@ public class Tarefa {
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
-    @OneToMany(mappedBy = "tarefa")
+    @OneToMany(mappedBy = "tarefa", fetch = FetchType.LAZY)
     private List<Anotacao> anotacoes;
 
     public Long getId() {

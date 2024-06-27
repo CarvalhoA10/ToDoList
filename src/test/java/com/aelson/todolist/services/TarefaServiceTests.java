@@ -1,6 +1,9 @@
 package com.aelson.todolist.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -10,11 +13,14 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.BeanUtils;
 
+import com.aelson.todolist.helpers.StatusTarefa;
+import com.aelson.todolist.helpers.TarefaRequest;
 import com.aelson.todolist.helpers.TarefaResponse;
 import com.aelson.todolist.models.Funcionario;
 import com.aelson.todolist.models.Tarefa;
@@ -25,17 +31,23 @@ public class TarefaServiceTests {
     
     @InjectMocks
     TarefaService tarefaService;
-
     @Mock
     TarefaRepository tarefaRepository;
+    @Mock
+    FuncionarioService funcionarioService;
 
     Tarefa tarefa;
     List<Tarefa> tarefas;
-
     TarefaResponse tarefaResponse;
+    TarefaRequest request;
+    Funcionario funcionario;
 
     @BeforeEach
     public void setup(){
+
+        funcionario = new Funcionario();
+        funcionario.setId(1L);
+        funcionario.setNome("Teste");
 
         tarefa = new Tarefa();
         tarefa.setId(1L);
@@ -43,6 +55,9 @@ public class TarefaServiceTests {
         tarefa.setAnotacoes(new ArrayList<>());
         tarefa.setNome("Tarefa");
         tarefa.setDescricao("Uma descrição");
+        tarefa.setStatus(StatusTarefa.valueOf("iniciada"));
+
+        request = new TarefaRequest(tarefa.getId(), tarefa.getNome(), tarefa.getFuncionario().getId(), tarefa.getDescricao(), tarefa.getPrazoEntrega(), tarefa.getStatus().getStatus());
 
         tarefaResponse = new TarefaResponse();
 
@@ -51,6 +66,17 @@ public class TarefaServiceTests {
         tarefaResponse.setNomeFuncionario(tarefa.getNome());
 
         tarefas = new ArrayList<>();
+    }
+
+    @Test
+    public void deve_retornar_um_tarefaResponse_ao_criar_nova_tarefa(){
+        when(funcionarioService.encontrarPorId(this.tarefa.getFuncionario().getId())).thenReturn(this.funcionario);
+        when(tarefaRepository.save(ArgumentMatchers.any(Tarefa.class))).thenReturn(this.tarefa);
+
+        TarefaResponse response = this.tarefaService.criar(this.request);
+        assertNotNull(response);
+        assertEquals(this.tarefa.getFuncionario().getId(), response.getIdFuncionario());
+        assertEquals(this.tarefa.getId(), response.getId());
     }
 
     @Test
@@ -81,6 +107,28 @@ public class TarefaServiceTests {
 
         assertEquals(expected, responses);
 
+    }
+
+    @Test
+    public void deve_retornar_uma_tarefaResponse_ao_atualizar(){
+        when(tarefaRepository.findById(anyLong())).thenReturn(Optional.of(this.tarefa));
+        when(tarefaRepository.save(ArgumentMatchers.any(Tarefa.class))).thenReturn(this.tarefa);
+
+        TarefaResponse response = this.tarefaService.atualizar(this.request);
+        assertNotNull(response);
+        assertEquals(this.tarefa.getFuncionario().getId(), response.getIdFuncionario());
+        assertEquals(this.tarefa.getId(), response.getId());
+
+    }
+
+    @Test
+    public void deve_retornar_uma_tarefaResponse_ao_deletar(){
+        when(tarefaRepository.findById(anyLong())).thenReturn(Optional.of(this.tarefa));
+        doNothing().when(tarefaRepository).delete(ArgumentMatchers.any(Tarefa.class));
+
+        TarefaResponse response = this.tarefaService.deletar(1L);
+
+        assertNotNull(response);
     }
 
 }

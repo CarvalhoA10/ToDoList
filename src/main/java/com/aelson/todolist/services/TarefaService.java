@@ -36,7 +36,7 @@ public class TarefaService {
     public TarefaResponse criar(TarefaRequest request){
 
         Tarefa tarefa = new Tarefa();
-        Funcionario funcionario = this.funcionarioService.encontrarPorId(request.idFuncionario());
+        Funcionario funcionario = this.funcionarioService.makeFuncionario(this.funcionarioService.encontrarPorId(request.idFuncionario()));
 
         BeanUtils.copyProperties(request, tarefa);
         tarefa.setFuncionario(funcionario);

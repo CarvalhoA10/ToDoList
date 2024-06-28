@@ -19,6 +19,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.BeanUtils;
 
+import com.aelson.todolist.helpers.FuncionarioResponse;
 import com.aelson.todolist.helpers.StatusTarefa;
 import com.aelson.todolist.helpers.TarefaRequest;
 import com.aelson.todolist.helpers.TarefaResponse;
@@ -42,12 +43,16 @@ public class TarefaServiceTests {
     TarefaRequest request;
     Funcionario funcionario;
 
+    FuncionarioResponse funcionarioResponse;
+
     @BeforeEach
     public void setup(){
 
         funcionario = new Funcionario();
         funcionario.setId(1L);
         funcionario.setNome("Teste");
+
+        funcionarioResponse = new FuncionarioResponse();
 
         tarefa = new Tarefa();
         tarefa.setId(1L);
@@ -70,7 +75,7 @@ public class TarefaServiceTests {
 
     @Test
     public void deve_retornar_um_tarefaResponse_ao_criar_nova_tarefa(){
-        when(funcionarioService.encontrarPorId(this.tarefa.getFuncionario().getId())).thenReturn(this.funcionario);
+        when(funcionarioService.encontrarPorId(this.tarefa.getFuncionario().getId())).thenReturn(this.funcionarioResponse);
         when(tarefaRepository.save(ArgumentMatchers.any(Tarefa.class))).thenReturn(this.tarefa);
 
         TarefaResponse response = this.tarefaService.criar(this.request);

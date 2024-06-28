@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.aelson.todolist.helpers.FuncionarioDto;
-import com.aelson.todolist.models.Funcionario;
+import com.aelson.todolist.helpers.FuncionarioRequest;
+import com.aelson.todolist.helpers.FuncionarioResponse;
 import com.aelson.todolist.services.FuncionarioService;
 
 @Controller
@@ -26,60 +26,60 @@ public class FuncionarioController {
     private FuncionarioService funcionarioService;
 
     @GetMapping("")
-    public ResponseEntity<List<Funcionario>> listarTodos(){
+    public ResponseEntity<List<FuncionarioResponse>> listarTodos(){
 
-        List<Funcionario> funcionarios = this.funcionarioService.listarTodos();
+        List<FuncionarioResponse> responses = this.funcionarioService.listarTodos();
         
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(funcionarios);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(responses);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Funcionario> listarPorId(@RequestParam(name = "id") Long id){
-        Funcionario funcionario = this.funcionarioService.encontrarPorId(id);
+    public ResponseEntity<FuncionarioResponse> listarPorId(@RequestParam(name = "id") Long id){
+        FuncionarioResponse response = this.funcionarioService.encontrarPorId(id);
 
-        if(funcionario == null){
-            funcionario = new Funcionario();
-            funcionario.setCargo("Funcionario não encontrado");
+        if(response == null){
+            response = new FuncionarioResponse();
+            response.setCargo("Funcionario não encontrado");
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(funcionario);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PostMapping("criar")
-    public ResponseEntity<Funcionario> criarFuncionario(@RequestBody FuncionarioDto dto){
+    public ResponseEntity<FuncionarioResponse> criarFuncionario(@RequestBody FuncionarioRequest request){
 
-        Funcionario funcionario = this.funcionarioService.criar(dto);
+        FuncionarioResponse response = this.funcionarioService.criar(request);
 
-        if(funcionario.getCargo() == null){
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(funcionario);
+        if(response.getCargo() == null){
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(response);
         }
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(funcionario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("atualizar")
-    public ResponseEntity<?> atualizarFuncionario(@RequestBody FuncionarioDto dto){
+    public ResponseEntity<FuncionarioResponse> atualizarFuncionario(@RequestBody FuncionarioRequest request){
 
-        Funcionario funcionario = this.funcionarioService.atualizar(dto);
+        FuncionarioResponse response = this.funcionarioService.atualizar(request);
 
-        if(funcionario == null){
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Funcionário não pode ser encontrado");
+        if(response == null){
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(new FuncionarioResponse());
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(funcionario);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
 
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deletarFuncionario(@RequestParam(name = "id") Long id){
+    public ResponseEntity<FuncionarioResponse> deletarFuncionario(@RequestParam(name = "id") Long id){
 
-        Funcionario funcionario = this.funcionarioService.deletar(id);
+        FuncionarioResponse response = this.funcionarioService.deletar(id);
 
-        if(funcionario == null){
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Funcionário com este id não pode ser encontrado");
+        if(response == null){
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(new FuncionarioResponse());
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body("Funcionário deletado com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).body(response);
 
     }
 }

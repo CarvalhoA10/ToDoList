@@ -1,6 +1,6 @@
 package com.aelson.todolist.helpers;
 
-public record AnotacaoDto(
+public record AnotacaoRequest(
     Long tarefaId,
     String anotacao
 ) {

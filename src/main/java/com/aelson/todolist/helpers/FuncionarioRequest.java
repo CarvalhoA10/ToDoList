@@ -1,6 +1,6 @@
 package com.aelson.todolist.helpers;
 
-public record FuncionarioDto(
+public record FuncionarioRequest(
     Long id,
     String nome,
     String cargo,
